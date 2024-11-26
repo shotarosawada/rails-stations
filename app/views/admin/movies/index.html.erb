@@ -1,0 +1,29 @@
+<h1>Admin::Movies#index</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Is Showing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.year %></td>
+        <td><%= movie.description %></td>
+        <td>
+          <% if movie.image_url.present? %>
+            <img src="<%= movie.image_url %>" alt="<%= movie.name %>" style="max-width:100px;">
+          <% else %>
+            No Image
+          <% end %>
+        </td>
+        <td><%= movie.is_showing ? "上映中" : "上映予定" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
