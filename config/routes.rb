@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'movies/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    resources :movies, only: [:index, :new, :create]
+    resources :movies, only: [:index, :new, :create, :edit, :update]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,7 +16,10 @@ end
 #Prefix                                    Verb                                                                                      URI                                                                                                Pattern                                                        Controller#Action
 #movies_index                              GET                                                                                       /movies/index(.:format)                                                                            movies#index
 #admin_movies                              GET                                                                                       /admin/movies(.:format)                                                                            admin/movies#index
+#POST                                      /admin/movies(.:format)                                                                   admin/movies#create
 #new_admin_movie                           GET                                                                                       /admin/movies/new(.:format)                                                                        admin/movies#new
+#admin_movie                               PATCH                                                                                     /admin/movies/:id(.:format)                                                                        admin/movies#update
+#PUT                                       /admin/movies/:id(.:format)                                                               admin/movies#update
 #rails_health_check                        GET                                                                                       /up(.:format)                                                                                      rails/health#show
 #turbo_recede_historical_location          GET                                                                                       /recede_historical_location(.:format)                                                              turbo/native/navigation#recede
 #turbo_resume_historical_location          GET                                                                                       /resume_historical_location(.:format)                                                              turbo/native/navigation#resume
@@ -43,4 +46,4 @@ end
 #GET                                       /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)  active_storage/representations/redirect#show
 #rails_disk_service                        GET                                                                                       /rails/active_storage/disk/:encoded_key/*filename(.:format)                                        active_storage/disk#show
 #update_rails_disk_service                 PUT                                                                                       /rails/active_storage/disk/:encoded_token(.:format)                                                active_storage/disk#update
-#
+#rails_direct_uploads                      POST                                                                                      /rails/active_storage/direct_uploads(.:format)                                                     active_storage/direct_uploads#create
