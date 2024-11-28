@@ -1,5 +1,5 @@
 class Admin::MoviesController < ApplicationController
-  before_action :set_movie, only: [:edit, :update, :show]
+  before_action :set_movie, only: [:edit, :update, :show, :destroy]
   def index
     @movies = Movie.all
   end
@@ -23,6 +23,14 @@ class Admin::MoviesController < ApplicationController
       redirect_to admin_movie_path(@movie), notice: 'Movie was successfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @movie.destroy
+      redirect_to admin_movie_path(@movie), notice: '削除しました'
+    else
+      redirect_to admin_movie_path(@movie), alert: '削除できませんでした'
     end
   end
 

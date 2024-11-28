@@ -25,5 +25,6 @@
         <td><%= movie.is_showing ? "上映中" : "上映予定" %></td>
       </tr>
     <% end %>
+    <%= link_to '削除', admin_movie_path(movie), method: :delete, data: { confirm: '削除しますか' } %>
   </tbody>
 </table>
