@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :movies, only: [:index]
+  resources :sheets, only: [:index, :new, :create, :edit, :update, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :admin do
     resources :movies, only: [:index, :new, :create, :edit, :update, :destroy]

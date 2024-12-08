@@ -1,0 +1,12 @@
+<h1>Sheets</h1>
+<table border="1">
+  <tbody>
+    <% @sheets.each do |row, seats| %>
+      <tr>
+        <% seats.each do |seat| %>
+          <td><%= "#{seat.row}-#{seat.column}" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
