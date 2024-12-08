@@ -12,4 +12,10 @@ class MoviesController < ApplicationController
       @movies = @movies.where(is_showing: false)
     end
   end
+
+  def show
+    # 指定されたIDの映画作品を取得
+    @movie = Movie.includes(:schedules).find(params[:id])
+    @schedules = @movie.schedules
+  end
 end
