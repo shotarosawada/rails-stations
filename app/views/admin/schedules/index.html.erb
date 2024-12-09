@@ -1,0 +1,20 @@
+<h1>Admin::Schedules#index</h1>
+<h1>スケジュール一覧</h1>
+
+<% @movies.each do |movie| %>
+  <h2>
+    作品ID: <%= movie.id %> - <%= link_to movie.title, admin_movie_path(movie) %>
+  </h2>
+
+  <ul>
+    <% movie.schedules.each do |schedule| %>
+      <li>
+        開始時刻: <%= schedule.start_time %> - 
+        終了時刻: <%= schedule.end_time %>
+        (<%= link_to "詳細", admin_schedule_path(schedule) %>)
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "新規スケジュール追加", new_admin_movie_schedule_path(movie) %>
+<% end %>
+

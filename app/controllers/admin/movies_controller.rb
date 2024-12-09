@@ -8,6 +8,7 @@ class Admin::MoviesController < ApplicationController
   end
 
   def show
+    @movie = Movie.includes(:schedules).find(params[:id])
   end
 
   def create

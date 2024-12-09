@@ -1,0 +1,21 @@
+<h1>Admin::Schedules#edit</h1>
+
+<%= form_with model: [:admin, @schedule], method: :put do |f| %>
+  <div>
+    <%= f.label :start_time, "開始時刻" %>
+    <%= f.time_select :start_time %>
+  </div>
+
+  <div>
+    <%= f.label :end_time, "終了時刻" %>
+    <%= f.time_select :end_time %>
+  </div>
+
+  <%= f.submit "更新" %>
+<% end %>
+
+<%= link_to "戻る", admin_schedules_path %>
+
+<!-- スケジュール削除リンク -->
+<%= button_to "削除", admin_schedule_path(@schedule), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+
