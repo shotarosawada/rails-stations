@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   resources :sheets, only: [:index, :new, :create, :edit, :update, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :admin do
-    resources :movies, only: [:index, :new, :create, :edit, :update, :destroy]
+    get 'schedules/index'
+    get 'schedules/show'
+    get 'schedules/edit'
+    get 'schedules/update'
+    get 'schedules/destroy'
+    resources :movies, only: [:index, :new, :create, :edit, :update, :destroy] do
+      resources :schedules, only: [:new]
+    end
+    resources :schedules, only: [:index, :show, :edit, :update, :destroy]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
